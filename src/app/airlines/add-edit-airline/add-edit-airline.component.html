@@ -1,0 +1,104 @@
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <h5>Airlines List</h5>
+            </div>
+        </div>
+        <div class="card">
+            <form [formGroup]="airlineForm">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="aname">Name<sup>*</sup></label>
+                            <input type="text" formControlName="name" name="name" class="form-control" id="aname">
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.name.dirty || submitted) && registerFormControl.name.errors?.required">
+                                Name is required
+                            </span>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="acountry">Country<sup>*</sup></label>
+                            <input type="text" formControlName="country" name="country" class="form-control"
+                                id="acountry">
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.country.dirty || submitted) && registerFormControl.country.errors?.required">
+                                Country is required
+                            </span>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="aslogan">Slogan<sup>*</sup></label>
+                            <input type="text" formControlName="slogan" name="slogan" class="form-control"
+                                id="aslogan" />
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.slogan.dirty || submitted) && registerFormControl.slogan.errors?.required">
+                                Slogan is required
+                            </span>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="ahead_quaters">Head Quaters<sup>*</sup></label>
+                            <input type="text" formControlName="head_quaters" name="head_quaters" class="form-control"
+                                id="ahead_quaters" />
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.head_quaters.dirty || submitted) && registerFormControl.head_quaters.errors?.required">
+                                Head Quaters is required
+                            </span>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="awebsite">Website<sup>*</sup></label>
+                            <input type="text" formControlName="website" name="website" class="form-control"
+                                id="awebsite" />
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.website.dirty || submitted) && registerFormControl.website.errors?.required">
+                                Website is required
+                            </span>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="aestablished">Established<sup>*</sup></label>
+                            <input type="text" formControlName="established" name="established" class="form-control"
+                                id="aestablished" />
+                            <span class="text-danger"
+                                *ngIf="(registerFormControl.established.dirty || submitted) && registerFormControl.established.errors?.required">
+                                Established is required
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end m-3">
+                    <button type="button" (click)="goBack(airlineForm)"
+                        class="btn btn-secondary float-start">Back</button>
+
+                    <!-- For Save -->
+                    <button type="button" *ngIf="!isEdit" (click)="submitAirlineForm(airlineForm,'noexit')"
+                        class="btn btn-primary me-3">
+                        Save
+                    </button>
+                    <button type="button" *ngIf="!isEdit" (click)="submitAirlineForm(airlineForm,'clone')"
+                        class="btn btn-primary me-3">
+                        Save and Clone
+                    </button>
+                    <button type="button" *ngIf="!isEdit" (click)="submitAirlineForm(airlineForm,'exit')"
+                        class="btn btn-primary">
+                        Save and Exit
+                    </button>
+
+                    <!-- For update -->
+                    <button type="button" *ngIf="isEdit" (click)="updateAirlineForm(airlineForm,'noexit')"
+                        class="btn btn-primary me-3">
+                        Update
+                    </button>
+                    <button type="button" *ngIf="isEdit" (click)="updateAirlineForm(airlineForm,'exit')"
+                        class="btn btn-primary">
+                        Update and Exit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="isSpinner" class="d-flex justify-content-center full-spinner">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>

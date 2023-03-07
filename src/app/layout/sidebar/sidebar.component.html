@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidebar" autosize>
+  <mat-sidenav #sidenav class="example-sidenav scroll-y" mode="side" opened="true" (mouseenter)="mouseenter()"
+    (mouseleave)="mouseleave()">
+    <mat-nav-list class="p-3">
+      <button [routerLink]="['/main-layout/dashboard']" routerLinkActive="router-link-active" mat-menu-item>
+        <mat-icon>dashboard</mat-icon>
+        <span>Dahshboard</span>
+      </button>
+      <button [routerLink]="['/main-layout/category']" routerLinkActive="router-link-active" mat-menu-item>
+        <mat-icon>store</mat-icon>
+        <span>Category</span>
+      </button>
+      <button mat-menu-item [routerLink]="['/main-layout/tournament']" routerLinkActive="router-link-active">
+        <mat-icon>subject</mat-icon>
+        <span>Tournament</span>
+      </button>
+      <button mat-menu-item [routerLink]="['/main-layout/team']" routerLinkActive="router-link-active">
+        <mat-icon>supervisor_account</mat-icon>
+        <span>Team</span>
+      </button>
+      <button mat-menu-item [routerLink]="['/main-layout/match']" routerLinkActive="router-link-active">
+        <mat-icon>view_list</mat-icon>
+        <span>Match</span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+      </mat-menu>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>

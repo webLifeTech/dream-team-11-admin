@@ -1,0 +1,55 @@
+<section class="main-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <button class="btn btn-primary float-end" (click)="addNewAirline()">
+                    <i class="bi bi-plus"></i> Add New Airline
+                </button>
+                <h5>Airlines List</h5>
+            </div>
+            <div class="card shadow">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Slogan</th>
+                                <!-- <th scope="col">Head Quaters</th> -->
+                                <!-- <th scope="col">Website</th> -->
+                                <th scope="col">Established</th>
+                                <th scope="col">Created Date</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="allAirlinesList.length">
+                            <tr *ngFor="let item of allAirlinesList; let inx = index">
+                                <th scope="row">{{inx+1}}</th>
+                                <td>{{item.name}}</td>
+                                <td>{{item.country}}</td>
+                                <td>{{item.slogan}}</td>
+                                <td>{{item.established}}</td>
+                                <td>{{item.createdAt | date:'medium'}}</td>
+                                <td>
+                                    <a class="me-2" (click)="editData(item._id)"><i class="bi bi-pencil-square"></i></a>
+                                    <a class="me-2" (click)="deleteAirlineById(item._id,inx)"><i
+                                            class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf="isSpinner && !allAirlinesList.length" class="text-center my-4">
+                        <h5>No data!</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="isSpinner" class="d-flex justify-content-center full-spinner">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
