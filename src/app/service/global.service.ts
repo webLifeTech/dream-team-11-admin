@@ -7,6 +7,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ export class GlobalService {
   loggedInUser: any = {};
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+  imageURL = environment.imageURL;
   constructor(
     private toastr: ToastrService,
     private router: Router,

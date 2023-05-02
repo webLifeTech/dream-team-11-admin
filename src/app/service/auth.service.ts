@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { OAuthService, AuthConfig } from 'angular-oauth2-oidc';
@@ -101,6 +101,29 @@ export class AuthService {
     })
   }
 
+  // post(api: any, data: any) {
+  //   // get-all-category : aSiWRfbznZ5WlO9N2qodO7ERHdw9R1xQAjXI4mAwzTt63tgqZjCpb8MvejlOtBzo
+  //   const headers = new HttpHeaders({
+  //     'Content-Type':'application/json; charset=utf-8',
+  //     'Access-Control-Request-Headers': '*',
+  //     'api-key': 'aSiWRfbznZ5WlO9N2qodO7ERHdw9R1xQAjXI4mAwzTt63tgqZjCpb8MvejlOtBzo',
+  //     'Accept': 'application/ejson'
+  //   });
+
+  //   return new Promise((resolve, reject) => {
+  //     this.http.post('https://ap-south-1.aws.data.mongodb-api.com/app/data-ykhua/endpoint/data/v1/action/findOne',{
+  //       "collection":"categories",
+  //       "database":"test",
+  //       "dataSource":"dreamteam11",
+  //       "projection": {"_id": 1}
+  //   },{ headers: headers }).subscribe((res) => {
+  //       resolve(res)
+  //     }, (err) => {
+  //       reject(err)
+  //     })
+  //   })
+  // }
+
   // Using for data UPDATE
   put(api: any, data: any) {
     return new Promise((resolve, reject) => {
@@ -123,4 +146,4 @@ export class AuthService {
       })
     })
   }
-} 
+}

@@ -1,1 +1,58 @@
-<p>team works!</p>
+<div class="card">
+  <div class="py-2 px-4 text-end">
+    <button [routerLink]="['/main-layout/team/add/new']" routerLinkActive="router-link-active" mat-raised-button
+      color="accent">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+  </div>
+
+  <!-- Table -->
+  <section>
+    <table mat-table [dataSource]="dataSource">
+      <!-- Team Name Column -->
+      <ng-container matColumnDef="team_name">
+        <th mat-header-cell *matHeaderCellDef> Team Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.team_name}} </td>
+      </ng-container>
+
+      <!-- Team Name Column -->
+      <ng-container matColumnDef="team_short_name">
+        <th mat-header-cell *matHeaderCellDef> Team short name </th>
+        <td mat-cell *matCellDef="let element"> {{element.team_short_name}} </td>
+      </ng-container>
+
+      <!-- Category Column -->
+      <ng-container matColumnDef="category_name">
+        <th mat-header-cell *matHeaderCellDef>Category</th>
+        <td mat-cell *matCellDef="let element"> {{element.category_id.category_name}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="action">
+        <th class="tbl_action" mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <div>
+            <button [routerLink]="['/main-layout/team/clone/'+element._id]" mat-icon-button class="me-1"
+              color="primary">
+              <mat-icon>copy_all</mat-icon>
+            </button>
+            <button [routerLink]="['/main-layout/team/edit/'+element._id]" mat-icon-button class="me-1" color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteTeam(element._id)" mat-icon-button class="me-1" color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator *ngIf="dataSource" [length]="dataSource.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page">
+    </mat-paginator>
+  </section>
+</div>

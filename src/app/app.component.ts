@@ -14,7 +14,8 @@ export class AppComponent {
     private gs: GlobalService,
     private router: Router,
   ) {
-    this.gs.loggedInUser = localStorage.getItem('dreamLoggedUser') != "undefined" ? JSON.parse(localStorage.getItem('dreamLoggedUser') || '') : {};
+    console.log("dreamLoggedUser >>", localStorage.getItem('dreamLoggedUser'))
+    this.gs.loggedInUser = localStorage.getItem('dreamLoggedUser') ? JSON.parse(localStorage.getItem('dreamLoggedUser') || '') : {};
     // if (this.gs.loggedInUser && this.gs.loggedInUser._id) {
     //   this.router.navigate(['/airlines'])
     // }

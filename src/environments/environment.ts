@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serverURL: 'http://localhost:3000/appv1/apimasterv1/'
+  serverURL: 'http://localhost:3000/appv1/apimasterv1/',
+  imageURL: 'http://localhost:3000/'
 };
 
 /*

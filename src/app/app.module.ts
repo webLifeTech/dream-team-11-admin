@@ -19,6 +19,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+// import { AddEditTeamComponent } from './team/add-edit-team/add-edit-team.component';
 // import { DialogOverviewComponent } from './dialog-overview/dialog-overview.component';
 
 @NgModule({
