@@ -36,6 +36,7 @@ export class AddEditMatchComponent implements OnInit {
       dream_team_img: [''],
       match_date: [''],
       match_end_time: [''],
+      match_start_time: [''],
       team1data: [''],
       team2data: [''],
       status: [true],
@@ -99,6 +100,7 @@ export class AddEditMatchComponent implements OnInit {
   getMatchById(catId : any) {
     this.auth.post('matchs/get-match-byid', { _id: catId }).then((res: any) => {
       this.matchForm.patchValue(res.data);
+      console.log(">>>", this.matchForm.value)
     })
   }
 
@@ -125,7 +127,7 @@ export class AddEditMatchComponent implements OnInit {
 
   // Update category
   updateMatch(from:any, type:any){
-    console.log("from >>>>>", from);
+    console.log("from >>>>>", from.value);
     if(from.valid){
       this.auth.post('matchs/update-match', from.value).then((res:any) => {
         this.gs.openSnackBar(res.msg);

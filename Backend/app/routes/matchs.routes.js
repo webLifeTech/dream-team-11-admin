@@ -3,7 +3,7 @@ const router = express.Router()
 const matchsModel = require('../model/matchs.model');
 const upload_files = require('./upload_files.routes');
 
-// For save matche
+// For save Match
 router.post('/save-match', async (req, res) => {
     try {
         console.log("req.body>>", req.body);
@@ -15,7 +15,7 @@ router.post('/save-match', async (req, res) => {
         res.json({
             data: table,
             status: true,
-            msg: 'matche added successfully'
+            msg: 'Match added successfully'
         })
     } catch (error) {
         console.log("error>>", error);
@@ -27,7 +27,7 @@ router.post('/save-match', async (req, res) => {
     }
 })
 
-// For get all matche
+// For get all Match
 router.post('/get-all-match', async (req, res) => {
     try {
         const data = await matchsModel.find().populate([
@@ -50,7 +50,7 @@ router.post('/get-all-match', async (req, res) => {
     }
 })
 
-// For get single matche by id
+// For get single Match by id
 router.post('/get-match-byid', async (req, res) => {
     try {
         const data = await matchsModel.findOne({
@@ -72,7 +72,7 @@ router.post('/get-match-byid', async (req, res) => {
     }
 })
 
-// For update matche
+// For update Match
 router.post('/update-match', async (req, res) => {
     try {
         console.log("req.body>>>", req.body);
@@ -83,7 +83,7 @@ router.post('/update-match', async (req, res) => {
 
         res.json({
             status: true,
-            msg: 'matche updated successfully'
+            msg: 'Match updated successfully'
         })
     } catch (error) {
         console.log("error>>", error);
@@ -95,7 +95,7 @@ router.post('/update-match', async (req, res) => {
     }
 })
 
-// For delete matche
+// For delete Match
 router.post('/delete-match', async (req, res) => {
     try {
         const data = await matchsModel.deleteOne({
@@ -103,7 +103,7 @@ router.post('/delete-match', async (req, res) => {
         })
         res.json({
             status: true,
-            msg: 'matche has been deleted successfully'
+            msg: 'Match has been deleted successfully'
         })
     } catch (error) {
         console.log("error>>", error);

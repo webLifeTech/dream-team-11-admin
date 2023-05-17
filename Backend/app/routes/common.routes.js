@@ -4,7 +4,7 @@ const appDetailsModel = require('../model/appdetails.model');
 const categoriesModel = require('../model/categories.model');
 
 // For get app details
-router.get('/get_app_info', async (req, res) => {
+router.post('/get_app_info', async (req, res) => {
     try {
         const data = await appDetailsModel.findOne({}).sort('createdAt');
         res.json({

@@ -1,7 +1,7 @@
 <!-- Form -->
 <div class="card">
   <section>
-    <form [formGroup]="matchForm" (ngSubmit)="saveMatch(matchForm)">
+    <form [formGroup]="matchForm">
       <div class="px-4 py-3">
         <div class="row">
           <div class="col-md-12">
@@ -73,6 +73,46 @@
               </div>
             </div>
           </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="basic-url" class="form-label">Match Date</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><mat-icon>date_range</mat-icon></span>
+                </div>
+                <input class="form-control" placeholder="Name" formControlName="match_date" type="date" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="basic-url" class="form-label">Match Start Time</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><mat-icon>schedule</mat-icon></span>
+                </div>
+                <input [ngxTimepicker]="picker" class="form-control" formControlName="match_start_time"
+                  name="match_start_time" [format]="24">
+                <ngx-material-timepicker #picker></ngx-material-timepicker>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="basic-url" class="form-label">Match End Time</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><mat-icon>schedule</mat-icon></span>
+                </div>
+                <input [ngxTimepicker]="picker2" class="form-control" formControlName="match_end_time"
+                  name="match_end_time" [format]="24">
+                <ngx-material-timepicker #picker2></ngx-material-timepicker>
+              </div>
+            </div>
+          </div>
+
           <div class="col-md-6">
             <div class="form-group">
               <label for="basic-url" class="form-label">Dream team</label>
@@ -84,13 +124,14 @@
               </div>
             </div>
           </div>
+
           <div class="col-md-6">
             <label for="basic-url" class="form-label">Status</label>
             <section class="pt-1">
               <mat-checkbox formControlName="status" name="status">Active</mat-checkbox>
             </section>
           </div>
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <p>
               <mat-form-field appearance="fill">
                 <mat-label>Input disabled</mat-label>
@@ -100,13 +141,7 @@
                 <mat-datepicker #dp3 disabled="false"></mat-datepicker>
               </mat-form-field>
             </p>
-          </div>
-          <div class="col-md-6">
-            <p>
-              <input [ngxTimepicker]="picker2">
-              <ngx-material-timepicker #picker2></ngx-material-timepicker>
-            </p>
-          </div>
+          </div> -->
 
           <div class="col-md-12">
             <div class="mb-2">
@@ -133,7 +168,7 @@
             <button (click)="back()" type="button" mat-raised-button color="warn" class="me-2">
               Cancel
             </button>
-            <button *ngIf="isAddForm" type="submit" mat-raised-button color="primary">
+            <button *ngIf="isAddForm" type="submit" (click)="saveMatch(matchForm)" mat-raised-button color="primary">
               Save
             </button>
             <button *ngIf="!isAddForm" (click)="updateMatch(matchForm, 'update')" type="button" mat-raised-button
