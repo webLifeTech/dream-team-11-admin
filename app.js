@@ -6,17 +6,17 @@ const path = require('path');
 const fs = require('fs');
 const http = require('http');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // mongodb+srv://parasgogdani027:XzQzcGudIXgIBM77@dreamteam11.m6qmld1.mongodb.net/test
 mongoose.connect('mongodb://localhost:27017/dreamteam11', {
-    useNewUrlParser: true,
-    keepAlive: true,
-    connectTimeoutMS: 6000000
+  useNewUrlParser: true,
+  keepAlive: true,
+  connectTimeoutMS: 6000000
 }).then(() => {
-    console.log('Connection to Database Successful');
+  console.log('Connection to Database Successful');
 }).catch((err) => {
-    console.error(err);
+  console.error(err);
 });
 
 app.set('port', process.env.PORT || 3000);
@@ -25,36 +25,36 @@ app.use(session({ secret: 'cats' }))
 // JSON Parsing
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }))
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-with, Content-Type, Accept, Authorization');
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-    }
-    next();
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-with, Content-Type, Accept, Authorization');
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
 });
 
 app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
 }));
 
-app.get('/image/:filename', function(req, res) {
+app.get('/image/:filename', function (req, res) {
   const filename = req.params.filename;
   const filepath = path.join(__dirname, 'uploads/', filename);
 
-  console.log("filepath >>>",filepath);
-  fs.readFile(filepath, function(err, data) {
-    console.log("data >>>",data);
+  console.log("filepath >>>", filepath);
+  fs.readFile(filepath, function (err, data) {
+    console.log("data >>>", data);
     if (err) {
       res.status(404).send('Image not found!');
     } else {
-      res.writeHead(200, {'Content-Type': 'image/png'});
+      res.writeHead(200, { 'Content-Type': 'image/png' });
       res.end(data);
     }
   });
@@ -82,5 +82,5 @@ app.use('/appv1/apimasterv1/matchs', matchsRoutes);
 
 const server = http.createServer(app);
 server.listen(port, () => {
-    console.log("App Run ..........",port);
+  console.log("App Run ..........", port);
 })
