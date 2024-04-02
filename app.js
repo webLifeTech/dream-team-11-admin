@@ -10,7 +10,8 @@ const port = process.env.PORT || 3000;
 
 // mongodb+srv://parasgogdani027:<password>@dreamteam11.m6qmld1.mongodb.net/
 // mongodb+srv://parasgogdani027:XzQzcGudIXgIBM77@dreamteam11.m6qmld1.mongodb.net/test
-mongoose.connect('mongodb://localhost:27017/dreamteam11', {
+mongoose.connect('mongodb+srv://parasgogdani027:XzQzcGudIXgIBM77@dreamteam11.m6qmld1.mongodb.net/test', {
+  // mongoose.connect('mongodb://localhost:27017/dreamteam11', {
   useNewUrlParser: true,
   keepAlive: true,
   connectTimeoutMS: 6000000
