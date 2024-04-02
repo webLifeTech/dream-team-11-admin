@@ -8,6 +8,7 @@ const http = require('http');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// mongodb+srv://parasgogdani027:<password>@dreamteam11.m6qmld1.mongodb.net/
 // mongodb+srv://parasgogdani027:XzQzcGudIXgIBM77@dreamteam11.m6qmld1.mongodb.net/test
 mongoose.connect('mongodb://localhost:27017/dreamteam11', {
   useNewUrlParser: true,
@@ -43,6 +44,10 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
+app.get('/', function (req, res) {
+  res.status(200).send('App Run ..........');
+})
 
 app.get('/image/:filename', function (req, res) {
   const filename = req.params.filename;
