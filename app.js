@@ -45,7 +45,7 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-app.get('/', function (req, res) {
+app.get('/get', function (req, res) {
   res.status(200).send('App Run ..........');
 })
 
